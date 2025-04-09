@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FR Cars & Tech - Notícias Automotivas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .logo-fr {
+            display: inline-block;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .logo-fr .f {
+            color: #fff;
+        }
+        
+        .logo-fr .r {
+            color: #fff;
+            position: relative;
+        }
+        
+        .logo-fr .r-part {
+            color: #ffd700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-right: 20px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .news-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .news-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-content h3 {
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+        
+        .news-content .date {
+            color: #ffd700;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .news-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .read-more {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .read-more:hover {
+            background: #ffd700;
+            color: #000;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            display: inline-block;
+            background: #000;
+            color: #ffd700;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1.5rem;
+        }
+        
+        footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .footer-logo .logo-fr {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-logo .logo-text {
+            font-size: 1.8rem;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            color: #fff;
+            font-size: 1.8rem;
+            transition: color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links a:hover {
+            color: #ffd700;
+            background-color: rgba(255, 215, 0, 0.2);
+        }
+        
+        .social-links a i {
+            transition: transform 0.3s;
+        }
+        
+        .social-links a:hover i {
+            transform: scale(1.2);
+        }
+        
+        .social-info {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            color: #aaa;
+            font-size: 0.9rem;
+            border-top: 1px solid #333;
+            padding-top: 1.5rem;
+            width: 100%;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ffd700;
+        }
+    </style>
+    <!-- Link para Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-fr">
+                    <span class="f">F</span><span class="r">R<span class="r-part">´</span></span>
+                </div>
+                <div class="logo-text">Cars & Tech</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Notícias</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Lançamentos</a></li>
+                    <li><a href="#">Tecnologia</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>As últimas novidades do mundo automotivo</h1>
+            <p>Tudo sobre carros, tecnologia e inovações</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="section-title">
+            <h2>Notícias Recentes</h2>
+        </div>
+        
+        <div class="news-container">
+            <article class="news-card">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Carro Elétrico">
+                </div>
+                <div class="news-content">
+                    <span class="date">15 Março 2023</span>
+                    <h3>Nova geração de carros elétricos promete autonomia recorde</h3>
+                    <p>As principais montadoras anunciaram modelos com mais de 700km de autonomia, reduzindo a ansiedade de carga.</p>
+                    <a href="#" class="read-more">Leia mais</a>
+                </div>
+            </article>
+            
+            <article class="news-card">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Carro Esportivo">
+                </div>
+                <div class="news-content">
+                    <span class="date">10 Março 2023</span>
+                    <h3>Fabricante italiana revela supercarro com mais de 1000cv</h3>
+                    <p>O novo modelo chega ao mercado com tecnologia híbrida e aceleração de 0-100km/h em menos de 2 segundos.</p>
+                    <a href="#" class="read-more">Leia mais</a>
+                </div>
+            </article>
+            
+            <article class="news-card">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pickup Truck">
+                </div>
+                <div class="news-content">
+                    <span class="date">5 Março 2023</span>
+                    <h3>Pickups ganham versões elétricas com capacidade off-road</h3>
+                    <p>As novas picapes elétricas mantêm a robustez para terrenos difíceis enquanto reduzem emissões poluentes.</p>
+                    <a href="#" class="read-more">Leia mais</a>
+                </div>
+            </article>
+            
+            <article class="news-card">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Carro Autônomo">
+                </div>
+                <div class="news-content">
+                    <span class="date">28 Fevereiro 2023</span>
+                    <h3>Tecnologia autônoma avança com novos sistemas de segurança</h3>
+                    <p>Montadoras implementam IA mais avançada para evitar acidentes e melhorar a experiência de direção autônoma.</p>
+                    <a href="#" class="read-more">Leia mais</a>
+                </div>
+            </article>
+            
+            <article class="news-card">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motor de Carro">
+                </div>
+                <div class="news-content">
+                    <span class="date">20 Fevereiro 2023</span>
+                    <h3>Motores a combustão evoluem para atender novas normas ambientais</h3>
+                    <p>Engenheiros desenvolvem tecnologias para tornar motores tradicionais mais limpos e eficientes.</p>
+                    <a href="#" class="read-more">Leia mais</a>
+                </div>
+            </article>
+            
+            <article class="news-card">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Carro Conceito">
+                </div>
+                <div class="news-content">
+                    <span class="date">15 Fevereiro 2023</span>
+                    <h3>Salão do Automóvel revela tendências para próxima década</h3>
+                    <p>Carros conceito apresentam designs revolucionários e tecnologias que devem chegar ao mercado até 2030.</p>
+                    <a href="#" class="read-more">Leia mais</a>
+                </div>
+            </article>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-fr">
+                        <span class="f">F</span><span class="r">R<span class="r-part">´</span></span>
+                    </div>
+                    <div class="logo-text">Cars & Tech</div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@frtechcars" target="_blank" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://instagram.com/fr_cars_oficial" target="_blank" title="Instagram FR Cars">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://instagram.com/frtech" target="_blank" title="Instagram FR Tech">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                
+                <div class="social-info">
+                    Siga-nos nas redes sociais
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#">Sobre Nós</a>
+                    <a href="#">Contato</a>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                </div>
+                
+                <div class="copyright">
+                    © 2023 FR Cars & Tech. Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
